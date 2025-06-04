@@ -9,6 +9,8 @@ export const GithubContext = createContext<GithubContextType>({
   repositories: [],
   loading: false,
   repoLoading: false,
+  success: false,
+  repoSuccess: false,
   error: null,
   repoError: null,
   selectedUser: null,
@@ -21,9 +23,20 @@ export function GithubProvider({ children }: { children: ReactNode }) {
   const [repositories, setRepositories] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(false);
   const [repoLoading, setRepoLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [repoSuccess, setRepoSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [repoError, setRepoError] = useState<string | null>(null);
   const [selectedUser, setSelectedUser] = useState<string | null>(null);
+
+  const showTimedToast = (duration = 1000) => {
+    setSuccess(true);
+    setRepoSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+      setRepoSuccess(false);
+    }, duration);
+  };
 
   const searchUsers = async (query: string) => {
     setLoading(true);
@@ -33,6 +46,8 @@ export function GithubProvider({ children }: { children: ReactNode }) {
       if (users.length === 0) {
         throw new Error("User not found");
       }
+      showTimedToast();
+      setLoading(true);
       setUsers(users);
     } catch {
       setError("User not Found. Please try again.");
@@ -48,6 +63,8 @@ export function GithubProvider({ children }: { children: ReactNode }) {
     setRepoError(null);
     try {
       const repos = await fetchUserRepos(username);
+      showTimedToast();
+      setRepoLoading(true);
       setRepositories(repos);
     } catch {
       setRepoError("Failed to fetch repositories. Please try again.");
@@ -65,6 +82,8 @@ export function GithubProvider({ children }: { children: ReactNode }) {
         loading,
         repoLoading,
         error,
+        success,
+        repoSuccess,
         repoError,
         selectedUser,
         searchUsers,

@@ -10,7 +10,8 @@ import Collapse from "./Collapse";
 
 export default function UserList() {
   const [expandedUserId, setExpandedUserId] = useState<number | null>(null);
-  const { users, loading, error, selectUser } = useContext(GithubContext);
+  const { users, loading, error, selectUser } =
+    useContext(GithubContext);
 
   const toggleUser = (userId: number, username: string) => {
     setExpandedUserId(expandedUserId === userId ? null : userId);
@@ -35,7 +36,7 @@ export default function UserList() {
         <ErrorMessage message={error} />
       </div>
     );
-  console.log(users)
+  console.log(users);
   return (
     <div className="mb-6">
       {users.length === 0 && <p className="text-center">No users found.</p>}
@@ -50,11 +51,13 @@ export default function UserList() {
               loginGit={user.login}
               isExpanded={isExpanded}
               tabIndex={0}
-              toggleUser={(e: { stopPropagation: () => void; }) => {
+              toggleUser={(e: { stopPropagation: () => void }) => {
                 e.stopPropagation(); // Prevent triggering selectUser when toggling collapse
                 toggleUser(user.id, user.login);
               }}
-              handleKeyDown={async (e: KeyboardEvent<HTMLDivElement>) => handleKeyDown(e, user.id, user.login)}
+              handleKeyDown={async (e: KeyboardEvent<HTMLDivElement>) =>
+                handleKeyDown(e, user.id, user.login)
+              }
             >
               {isExpanded && (
                 <div>

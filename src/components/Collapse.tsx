@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
+
 import Arrow from "@/icon/arrow";
 
 interface CollapseProps {

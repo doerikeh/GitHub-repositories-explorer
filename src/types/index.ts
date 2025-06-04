@@ -1,3 +1,4 @@
+
 export interface GithubUser {
   id: number;
   login: string;
@@ -18,6 +19,8 @@ export interface GithubContextType {
   loading: boolean;
   repoLoading: boolean;
   error: string | null;
+  success:boolean;
+  repoSuccess: boolean;
   repoError: string | null;
   selectedUser: string | null;
   searchUsers: (query: string) => Promise<void>;
