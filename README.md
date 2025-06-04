@@ -14,6 +14,7 @@ A web application built with Next.js to search and explore GitHub users and thei
 - Error handling for API failures.
 - Loading states for user and repository searches.
 - End-to-end and component testing with Cypress.
+- when successfully retrieving data a notification will appear 
 
 ## Tech Stack
 
