@@ -2,6 +2,9 @@
 
 A web application built with Next.js to search and explore GitHub users and their repositories. This project uses React, TypeScript, and Cypress for end-to-end and component testing.
 
+![alt text](src/assets/image/image.png)
+
+
 ## Features
 
 - Search for up to 5 GitHub users by username.
@@ -19,8 +22,12 @@ A web application built with Next.js to search and explore GitHub users and thei
 - **TypeScript**
 - **Tailwind CSS** for styling
 - **React Context** for state management
-- **Jest** and **React Testing Library** for testing
+- **Cypress** for testing
 - **GitHub API** for data fetching
+
+
+# Unitest
+![alt text](src/assets/image/image-1.png)
 
 1. **Clone the repository**:
    ```bash
