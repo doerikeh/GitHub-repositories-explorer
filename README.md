@@ -8,7 +8,6 @@ A web application built with Next.js to search and explore GitHub users and thei
 ## Features
 
 - Search for up to 5 GitHub users by username.
-- Specific error handling for "User not found" with a "Search Again" button to reset the search.
 - Responsive design with mobile-first approach using Tailwind CSS.
 - Type-safe with TypeScript.
 - Global state management with React Context.
